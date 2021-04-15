@@ -2,15 +2,30 @@ import 'package:flutter/material.dart';
 
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
 }
+
+class App extends StatelessWidget {//App
+  @override
+  Widget build(BuildContext context) {
+
+      return MaterialApp(
+        title: 'Das ist gut',
+        home: MySecondWidget(),
+
+      );
+  }
+}
+
 
 class MyFirstWidget extends StatelessWidget { // Stateless
   int _buildCallCounter = 0;
 
   @override
   Widget build(BuildContext context) {
+    Type getContextType() => context.runtimeType;
     print('Метод build() у StatelessWidget был вызван ${++_buildCallCounter} раз');
+    print(getContextType());
     return Container(
       child: Center(
         child: Text('Hello!'),
@@ -20,17 +35,17 @@ class MyFirstWidget extends StatelessWidget { // Stateless
 }
 
 class MySecondWidget extends StatefulWidget { // StateFull
-
   @override
   _MySecondWidgetState createState() => _MySecondWidgetState();
 }
 
 class _MySecondWidgetState extends State<MySecondWidget> {
   int _buildCallCounter = 0;
-
+  Type getContextType() => context.runtimeType;
   @override
   Widget build(BuildContext context) {
     print('Метод build() у StatefulWidget был вызван ${++_buildCallCounter} раз');
+    print(getContextType());
     return Container(
         child: Center(
         child: Text('Hello!'),
@@ -38,6 +53,8 @@ class _MySecondWidgetState extends State<MySecondWidget> {
     );
   }
 }
+
+
 
 
 class MyApp extends StatelessWidget {
