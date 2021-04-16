@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/ui/screen/sight_list_screen.dart';
 
 
 void main() {
@@ -11,7 +12,7 @@ class App extends StatelessWidget {//App
 
       return MaterialApp(
         title: 'Das ist gut',
-        home: MySecondWidget(),
+        home: SightListScreen(),
 
       );
   }
