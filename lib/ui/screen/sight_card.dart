@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 
+//класс SightCard карточка места для показа ее в sight_list_screen.dart
+
 class SightCard extends StatelessWidget {
   final Sight sight;
 

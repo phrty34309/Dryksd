@@ -1,3 +1,6 @@
+//кдасс Sight используется в sight_card.dart
+
+
 class Sight {
   String name;
   String geoPosition;

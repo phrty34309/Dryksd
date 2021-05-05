@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/screen/Colors.dart';
 
-class sightDetails extends StatelessWidget {
+//класс SightDetails представляет карточку определнного места
+
+class SightDetails extends StatelessWidget {
   final Sight sight;
 
-  sightDetails(this.sight);
+  SightDetails(this.sight);
 
   @override
   Widget build(BuildContext context) {
@@ -28,25 +31,25 @@ class sightDetails extends StatelessWidget {
                             topRight: Radius.circular(5.0),
                             bottomLeft: Radius.circular(5.0),
                             bottomRight: Radius.circular(5.0)),
-                        color: Colors.white,
+                        color: colorBtnBack,
                       ),
                     )),
                 Container(
                   width: 360,
                   height: 7.57,
-                  color: Colors.purple,
+                  color: colorBtnGallery,
                   margin: EdgeInsets.fromLTRB(0.0, 295, 0.0, 0.0),
                 )
-              ], //кнопка назад и кнопка прокрутки галереи
+              ],
             ),
             height: 361,
             width: 360,
-            color: Colors.tealAccent,
+            color: colorBgUp,
           ),
           Container(
               width: 360,
               height: 400,
-              color: Colors.white,
+              color: colorBgBottom,
               child: Column(
                 children: <Widget>[
                   Container(
@@ -54,7 +57,7 @@ class sightDetails extends StatelessWidget {
                       sight.name,
                       style: TextStyle(
                           fontSize: 24,
-                          color: const Color(0xFF3B3E5B),
+                          color: colorText1,
                           decoration: TextDecoration.none),
                     ),
                     height: 29,
@@ -70,14 +73,14 @@ class sightDetails extends StatelessWidget {
                             text: sight.type,
                             style: TextStyle(
                               fontSize: 14,
-                              color: const Color(0xFF3B3E5B),
+                              color: colorText1,
                             ),
                             children: <TextSpan>[
                           TextSpan(
                               text: '   открыто круглосуточно',
                               style: TextStyle(
                                   fontSize: 14,
-                                  color: Color(0xFF7C7E91)))
+                                  color: colorText2))
                         ])),
                   ),
                   Container(
@@ -88,7 +91,7 @@ class sightDetails extends StatelessWidget {
                       sight.details,
                       style: TextStyle(
                           fontSize: 14,
-                          color: Color(0xFF3B3E5B),
+                          color: colorText1,
                           decoration: TextDecoration.none),
                     ),
                   ),
@@ -103,7 +106,7 @@ class sightDetails extends StatelessWidget {
                             topRight: Radius.circular(15.0),
                             bottomLeft: Radius.circular(15.0),
                             bottomRight: Radius.circular(15.0)),
-                        color: Colors.green,
+                        color: colorBtnRout,
                       ),
                       child: Align(
                         alignment: Alignment.center,
@@ -111,9 +114,8 @@ class sightDetails extends StatelessWidget {
                           'ПОСТРОИТЬ МАРШРУТ',
                           style: TextStyle(
                               fontSize: 14,
-                              color: Colors.white,
+                              color: colorText3,
                               decoration: TextDecoration.none),
-                          //textAlign: TextAlign.center,
                         ),
                       )),
                   Container(
@@ -123,13 +125,12 @@ class sightDetails extends StatelessWidget {
                         margin: EdgeInsets.fromLTRB(16.0, 32.0, 0.0, 0.0),
                         height: 40,
                         width: 164,
-                        //color: Colors.amber,
                         child: Row(
                           children: [
                             Container(
                               width: 22,
                               height: 19,
-                              color: Colors.blueAccent,
+                              color: colorBtnLeft,
                               margin:
                                   EdgeInsets.fromLTRB(14.0, 10.5, 9.0, 10.5),
                             ),
@@ -143,7 +144,6 @@ class sightDetails extends StatelessWidget {
                               ),
                               width: 112,
                               height: 18,
-                              //color: Colors.deepOrangeAccent,
                               margin: EdgeInsets.fromLTRB(0.0, 11.0, 0.0, 11.0),
                             )
                           ],
@@ -153,13 +153,12 @@ class sightDetails extends StatelessWidget {
                         margin: EdgeInsets.fromLTRB(0.0, 32.0, 16.0, 0.0),
                         width: 164,
                         height: 40,
-                        //color: Colors.cyan,
                         child: Row(
                           children: [
                             Container(
                               width: 20,
                               height: 18,
-                              color: Colors.yellow,
+                              color: colorBtnRight,
                               margin:
                                   EdgeInsets.fromLTRB(23.0, 11.0, 0.0, 11.0),
                             ),
@@ -169,11 +168,9 @@ class sightDetails extends StatelessWidget {
                                 style: TextStyle(
                                     fontSize: 14,
                                     decoration: TextDecoration.none,
-                                    color: Color(0xFF3B3E5B)),
+                                    color: colorText1),
                               ),
-                              //width: 84,
                               height: 18,
-                              //color: Colors.deepOrange,
                               margin:
                                   EdgeInsets.fromLTRB(10.0, 11.0, 18.0, 11.0),
                             )
