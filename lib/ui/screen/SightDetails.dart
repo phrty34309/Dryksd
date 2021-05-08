@@ -17,7 +17,7 @@ class SightDetails extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            child: Column(
+            child: Stack(
               children: <Widget>[
                 Align(
                     alignment: FractionalOffset(0.1, 0.0),
@@ -34,17 +34,27 @@ class SightDetails extends StatelessWidget {
                         color: colorBtnBack,
                       ),
                     )),
+                Center(
+                  child: Container(
+                    child: CircularProgressIndicator(//прогресс индикатор
+                      value: 0.9,
+                    ),
+                    margin: EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 0.0),
+                  ),
+                ),
                 Container(
                   width: 360,
                   height: 7.57,
                   color: colorBtnGallery,
-                  margin: EdgeInsets.fromLTRB(0.0, 295, 0.0, 0.0),
+                  margin: EdgeInsets.fromLTRB(0.0, 353.43, 0.0, 0.0),
                 )
               ],
             ),
             height: 361,
             width: 360,
-            color: colorBgUp,
+            decoration: BoxDecoration(//картинка кремля тут
+                image: DecorationImage(
+                    image: AssetImage(sight.image), fit: BoxFit.cover)),
           ),
           Container(
               width: 360,
@@ -78,9 +88,7 @@ class SightDetails extends StatelessWidget {
                             children: <TextSpan>[
                           TextSpan(
                               text: '   открыто круглосуточно',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: colorText2))
+                              style: TextStyle(fontSize: 14, color: colorText2))
                         ])),
                   ),
                   Container(

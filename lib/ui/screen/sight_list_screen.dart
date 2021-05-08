@@ -15,7 +15,7 @@ class _SightListScreenState extends State<SightListScreen> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(70.0), //Задание №4
+            preferredSize: Size.fromHeight(70.0),
             child: AppBar(
               title: Text(
                 "Список\nинтересных мест",
@@ -25,7 +25,7 @@ class _SightListScreenState extends State<SightListScreen> {
                     fontSize: 32,
                     fontWeight: FontWeight.bold),
               ),
-              toolbarHeight: 120, //  высоту
+              toolbarHeight: 120,
               elevation: 0.0, //убрал тень
               backgroundColor: Colors.white,
             )),

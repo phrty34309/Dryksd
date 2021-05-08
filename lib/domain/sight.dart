@@ -7,6 +7,7 @@ class Sight {
   String url;
   String details;
   String type;
+  var image;
 
-  Sight(this.name, this.geoPosition, this.url, this.details, this.type);
+  Sight(this.name, this.geoPosition, this.url, this.details, this.type, this.image);
 }

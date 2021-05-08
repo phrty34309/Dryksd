@@ -29,6 +29,9 @@ flutter:
         - asset: assets/res/Roboto/Roboto-Black.ttf
           weight: 100
 
-
+  assets:
+    - assets/image/кремль_Москва.jpg
+    - assets/image/кремль_Новгород.jpg
+    - assets/image/кремль_Псков.jpg
 
 
