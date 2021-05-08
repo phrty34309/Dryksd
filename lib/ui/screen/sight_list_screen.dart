@@ -14,17 +14,21 @@ class _SightListScreenState extends State<SightListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text(
-            "Список\nинтересных мест",
-            textAlign: TextAlign.left,
-            style: TextStyle(
-                color: const Color(0xFF3B3E5B), fontSize: 32, fontWeight: FontWeight.bold),
-          ),
-          toolbarHeight: 120, //  высоту
-          elevation: 0.0, //убрал тень
-          backgroundColor: Colors.white,
-        ),
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(70.0), //Задание №4
+            child: AppBar(
+              title: Text(
+                "Список\nинтересных мест",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: const Color(0xFF3B3E5B),
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold),
+              ),
+              toolbarHeight: 120, //  высоту
+              elevation: 0.0, //убрал тень
+              backgroundColor: Colors.white,
+            )),
         body: SingleChildScrollView(
             child: Column(children: <Widget>[
           SightCard(mocks[0]),
