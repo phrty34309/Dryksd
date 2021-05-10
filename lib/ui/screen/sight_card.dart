@@ -5,6 +5,10 @@ import 'package:places/domain/sight.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
+  var a = BorderRadius.circular(15.0);
+  var b = BorderRadius.circular(15.0);
+  var c = BorderRadius.circular(15.0);
+  var d = BorderRadius.circular(15.0);
 
   SightCard(this.sight);
 
@@ -14,34 +18,47 @@ class SightCard extends StatelessWidget {
         aspectRatio: 3 / 2,
         child: Column(children: <Widget>[
           Container(
-              child: Stack(children: <Widget>[
-                Container(
-                  child: Text(
-                    (sight.type),
-                    style: TextStyle(
-                        fontSize: 14.0, color: const Color(0xFF3B3E5B)),
+            child: Stack(children: <Widget>[
+              Container(
+                  height: 96,
+                  width: 328,
+                  margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+                  decoration: BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15.0),
+                        topRight: Radius.circular(15.0)),
                   ),
-                  margin: EdgeInsets.fromLTRB(16.0, 16.0, 0.0, 0.0),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15.0),
+                          topRight: Radius.circular(15.0)),
+                      child: Image.network(
+                        sight.image,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (BuildContext context, Widget child,
+                            ImageChunkEvent loadProgress) {
+                          if (loadProgress == null) return child;
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadProgress.expectedTotalBytes != null
+                                  ? loadProgress.cumulativeBytesLoaded /
+                                      loadProgress.expectedTotalBytes
+                                  : null,
+                            ),
+                          );
+                        },
+                      ))),
+              Container(
+                child: Text(
+                  (sight.type),
+                  style:
+                      TextStyle(fontSize: 14.0, color: const Color(0xFF3B3E5B)),
                 ),
-                Positioned(
-                  left: 143,
-                  top: 35,
-                  child: Container(
-                    child: CircularProgressIndicator( //прогресс индикатор
-                      value: 0.9,
-                    ),
-                  ),
-                )
-              ]),
-              height: 96,
-              width: 328,
-              margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15.0),
-                      topRight: Radius.circular(15.0)),
-                  image: DecorationImage( // картинка тут
-                      image: AssetImage(sight.image), fit: BoxFit.cover))),
+                margin: EdgeInsets.fromLTRB(23.0, 18.0, 0.0, 0.0),
+              ),
+            ]),
+          ),
           SizedBox(
             width: 328,
             height: 10,

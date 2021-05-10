@@ -3,6 +3,7 @@ import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_card.dart';
 import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/SightDetails.dart';
+import 'package:places/ui/screen/VisitingScreen.dart';
 
 
 void main() {
@@ -15,7 +16,7 @@ class App extends StatelessWidget {//App
 
       return MaterialApp(
         title: 'Das ist gut',
-        home: SightListScreen()//SightDetails(mocks[0])
+        home: Visiting()//SightListScreen()//SightDetails(mocks[0])
 
       );
   }
