@@ -4,32 +4,54 @@ import 'package:places/ui/screen/sight_card.dart';
 import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/SightDetails.dart';
 import 'package:places/ui/screen/VisitingScreen.dart';
-
+import 'package:places/ui/screen/themes.dart';
 
 void main() {
   runApp(App());
 }
 
-class App extends StatelessWidget {//App
+class App extends StatefulWidget {
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  var isDarkMode = false;
+
   @override
   Widget build(BuildContext context) {
-
-      return MaterialApp(
-        title: 'Das ist gut',
-        home: Visiting()//SightListScreen()//SightDetails(mocks[0])
-
-      );
+    return MaterialApp(
+        title: 'Интересные места',
+        theme: isDarkMode ? darkTheme : lightTheme,
+        home: Stack(children: <Widget>[
+          Visiting(),// SightListScreen(),
+          Container(width: 65,
+              margin: EdgeInsets.fromLTRB(275.0, 490.0, 16.0, 6.0),
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50)),
+                onPressed: () {
+                  setState(
+                    () {
+                      isDarkMode = !isDarkMode;
+                    },
+                  );
+                },
+                child: Text(isDarkMode ? 'To Light' : 'To Dark'),
+              ))
+        ]));
   }
 }
 
-
-class MyFirstWidget extends StatelessWidget { // Stateless
+class MyFirstWidget extends StatelessWidget {
+  // Stateless
   int _buildCallCounter = 0;
 
   @override
   Widget build(BuildContext context) {
     Type getContextType() => context.runtimeType;
-    print('Метод build() у StatelessWidget был вызван ${++_buildCallCounter} раз');
+    print(
+        'Метод build() у StatelessWidget был вызван ${++_buildCallCounter} раз');
     print(getContextType());
     return Container(
       child: Center(
@@ -39,53 +61,55 @@ class MyFirstWidget extends StatelessWidget { // Stateless
   }
 }
 
-class MySecondWidget extends StatefulWidget { // StateFull
+class MySecondWidget extends StatefulWidget {
+  // StateFull
   @override
   _MySecondWidgetState createState() => _MySecondWidgetState();
 }
 
 class _MySecondWidgetState extends State<MySecondWidget> {
   int _buildCallCounter = 0;
+
   Type getContextType() => context.runtimeType;
+
   @override
   Widget build(BuildContext context) {
-    print('Метод build() у StatefulWidget был вызван ${++_buildCallCounter} раз');
+    print(
+        'Метод build() у StatefulWidget был вызван ${++_buildCallCounter} раз');
     print(getContextType());
     return Container(
-        child: Center(
+      child: Center(
         child: Text('Hello!'),
-        ),
+      ),
     );
   }
 }
-
-
-
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MySecondWidget()//MyFirstWidget(),//MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.blue,
+          // This makes the visual density adapt to the platform that you run
+          // the app on. For desktop platforms, the controls will be smaller and
+          // closer together (more dense) than on mobile platforms.
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home:
+            MySecondWidget() //MyFirstWidget(),//MyHomePage(title: 'Flutter Demo Home Page'),
+        );
   }
 }
 

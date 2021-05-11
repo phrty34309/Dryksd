@@ -13,7 +13,7 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        //backgroundColor: Colors.white,
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(70.0),
             child: AppBar(
@@ -27,7 +27,7 @@ class _SightListScreenState extends State<SightListScreen> {
               ),
               toolbarHeight: 120,
               elevation: 0.0, //убрал тень
-              backgroundColor: Colors.white,
+              //backgroundColor: Colors.white,
             )),
         body: SingleChildScrollView(
             child: Column(children: <Widget>[

@@ -14,7 +14,7 @@ class _VisitingState extends State<Visiting> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.white,
+            //backgroundColor: Colors.white,
             elevation: 0.0,
             toolbarHeight: 156,
             bottom: PreferredSize(

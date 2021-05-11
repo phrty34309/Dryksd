@@ -83,7 +83,7 @@ class SightCard extends StatelessWidget {
                       maxHeight: 150),
                   child: Text(
                     'краткое описание...',
-                    style: TextStyle(fontSize: 14.0, color: Color(0xFF7C7E91)),
+                    style: TextStyle(fontSize: 14.0, color: Color(0xFF3B3E5B)),
                   )),
               margin: EdgeInsets.fromLTRB(32.0, 0.0, 0.0, 0.0),
               height: 70,
