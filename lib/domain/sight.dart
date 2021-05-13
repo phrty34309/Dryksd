@@ -3,7 +3,7 @@
 
 class Sight {
   String name;
-  String geoPosition;
+  List geoPosition;
   String url;
   String details;
   String type;

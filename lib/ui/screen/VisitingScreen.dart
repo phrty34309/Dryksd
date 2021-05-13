@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_card.dart';
 
+
 class Visiting extends StatefulWidget {
   @override
   _VisitingState createState() => _VisitingState();
@@ -71,37 +72,78 @@ class _VisitingState extends State<Visiting> {
           ]),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
+            //чтобы первая иконка не выезжала
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.format_list_bulleted,
-                    size: 20,
-                    color: Colors.black,
-                  ),
+                  icon: InkWell(
+                      splashColor: Colors.white,
+                      onTap: () {
+                        setState(() {
+                          print('да, это меню');
+                        });
+                      },
+                      child: Container(
+                        width: 70,
+                        child: Icon(
+                          Icons.format_list_bulleted,
+                          size: 20,
+                          color: Colors.black,
+                        ),
+                      )),
                   label: '',
                   backgroundColor: Colors.white),
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.map,
-                    size: 20,
-                    color: Colors.black,
-                  ),
+                  icon: InkWell(
+                      splashColor: Colors.white,
+                      onTap: () {
+                        setState(() {
+                          print('да, это карта');
+                        });
+                      },
+                      child: Container(
+                        width: 70,
+                        child: Icon(
+                          Icons.map,
+                          size: 20,
+                          color: Colors.black,
+                        ),
+                      )),
                   label: '',
                   backgroundColor: Colors.white),
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.favorite,
-                    size: 20,
-                    color: Colors.black,
-                  ),
+                  icon: InkWell(
+                      splashColor: Colors.white,
+                      onTap: () {
+                        setState(() {
+                          print('да, это like');
+                        });
+                      },
+                      child: Container(
+                        width: 70,
+                        child: Icon(
+                          Icons.favorite,
+                          size: 20,
+                          color: Colors.black,
+                        ),
+                      )),
                   label: '',
                   backgroundColor: Colors.white),
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.settings,
-                    size: 20,
-                    color: Colors.black,
-                  ),
+                  icon: InkWell(
+                      splashColor: Colors.white,
+                      onTap: () {
+                        setState(() {
+                          print('да, это settings');
+                        });
+                      },
+                      child: Container(
+                        width: 70,
+                        child: Icon(
+                          Icons.settings,
+                          size: 20,
+                          color: Colors.black,
+                        ),
+                      )),
                   label: '',
                   backgroundColor: Colors.white)
             ],
