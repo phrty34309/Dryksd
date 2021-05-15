@@ -25,7 +25,7 @@ class _AppState extends State<App> {
         title: 'Интересные места',
         theme: isDarkMode ? darkTheme : lightTheme,
         home: Stack(children: <Widget>[
-          FilterScreen(),//SightDetails(mocks[0]),//SightListScreen(),//Visiting(),
+          FilterScreen(),//SightListScreen(), //Visiting(), //SightDetails(mocks[0]),
           Container(width: 65,
               margin: EdgeInsets.fromLTRB(275.0, 490.0, 16.0, 6.0),
               child: RaisedButton(

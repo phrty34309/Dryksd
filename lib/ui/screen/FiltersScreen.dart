@@ -13,22 +13,21 @@ class FilterScreen extends StatefulWidget {
   _FilterScreenState createState() => _FilterScreenState();
 }
 
-bool _checkbox_hotel = false;//это для сброса чекбоксов
+bool _checkbox_hotel = false; //это для сброса чекбоксов
 bool _checkbox_restaraunt = false;
 bool _checkbox_special = false;
 bool _checkbox_park = false;
 bool _checkbox_museum = false;
 bool _checkbox_cafe = false;
 
-var colorHotel = Colors.greenAccent;//это для смены цвета при сбросе чекбоксов
+var colorHotel = Colors.greenAccent; //это для смены цвета при сбросе чекбоксов
 var colorRestaraunt = Colors.greenAccent;
 var colorSpecial = Colors.greenAccent;
 var colorPark = Colors.greenAccent;
 var colorMuseum = Colors.greenAccent;
 var colorCafe = Colors.greenAccent;
 
-
-String strValue = '0';// это радиус показывает в метрах
+String strValue = '0.000'; // это радиус показывает в метрах
 String amount = '0'; // это количество мест показывает в кнопке зеленой внизу
 var _value = 100.0;
 var centerPoint = [55.7546469, 37.6214679]; // координата центра
@@ -103,7 +102,8 @@ class _FilterScreenState extends State<FilterScreen> {
             ),
           ),
           Container(
-            child: InkWell(// это сброс чекбоксов и цвета
+            child: InkWell(
+                // это сброс чекбоксов и цвета
                 splashColor: Colors.white,
                 onTap: () {
                   setState(() {
@@ -220,9 +220,11 @@ class _FilterScreenState extends State<FilterScreen> {
                     onChanged: (value) {
                       setState(() {
                         if (_checkbox_restaraunt == true) {
-                          _checkbox_restaraunt = false; colorRestaraunt = Colors.greenAccent;
+                          _checkbox_restaraunt = false;
+                          colorRestaraunt = Colors.greenAccent;
                         } else {
-                          _checkbox_restaraunt = true; colorRestaraunt = Colors.tealAccent;
+                          _checkbox_restaraunt = true;
+                          colorRestaraunt = Colors.tealAccent;
                         }
                       });
                     },
@@ -231,13 +233,12 @@ class _FilterScreenState extends State<FilterScreen> {
                   width: 16,
                   height: 16,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(35.0),
-                        topRight: Radius.circular(35.0),
-                        bottomLeft: Radius.circular(35.0),
-                        bottomRight: Radius.circular(35.0)),
-                    color: Colors.tealAccent
-                  ),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(35.0),
+                          topRight: Radius.circular(35.0),
+                          bottomLeft: Radius.circular(35.0),
+                          bottomRight: Radius.circular(35.0)),
+                      color: Colors.tealAccent),
                 )
               ],
             )),
@@ -248,13 +249,12 @@ class _FilterScreenState extends State<FilterScreen> {
                   child: Icon(Icons.star_border),
                   margin: EdgeInsets.fromLTRB(44.0, 0.0, 0.0, 0.0),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(35.0),
-                        topRight: Radius.circular(35.0),
-                        bottomLeft: Radius.circular(35.0),
-                        bottomRight: Radius.circular(35.0)),
-                    color: colorSpecial
-                  ),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(35.0),
+                          topRight: Radius.circular(35.0),
+                          bottomLeft: Radius.circular(35.0),
+                          bottomRight: Radius.circular(35.0)),
+                      color: colorSpecial),
                   width: 64,
                   height: 64,
                 ),
@@ -266,9 +266,11 @@ class _FilterScreenState extends State<FilterScreen> {
                     onChanged: (value) {
                       setState(() {
                         if (_checkbox_special == true) {
-                          _checkbox_special = false; colorSpecial = Colors.greenAccent;
+                          _checkbox_special = false;
+                          colorSpecial = Colors.greenAccent;
                         } else {
-                          _checkbox_special = true; colorSpecial = Colors.tealAccent;
+                          _checkbox_special = true;
+                          colorSpecial = Colors.tealAccent;
                         }
                       });
                     },
@@ -345,13 +347,12 @@ class _FilterScreenState extends State<FilterScreen> {
                   child: Icon(Icons.park),
                   margin: EdgeInsets.fromLTRB(40.5, 0.0, 0.0, 0.0),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(35.0),
-                        topRight: Radius.circular(35.0),
-                        bottomLeft: Radius.circular(35.0),
-                        bottomRight: Radius.circular(35.0)),
-                    color: colorPark
-                  ),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(35.0),
+                          topRight: Radius.circular(35.0),
+                          bottomLeft: Radius.circular(35.0),
+                          bottomRight: Radius.circular(35.0)),
+                      color: colorPark),
                   width: 64,
                   height: 64,
                 ),
@@ -363,9 +364,11 @@ class _FilterScreenState extends State<FilterScreen> {
                     onChanged: (value) {
                       setState(() {
                         if (_checkbox_park == true) {
-                          _checkbox_park = false; colorPark = Colors.greenAccent;
+                          _checkbox_park = false;
+                          colorPark = Colors.greenAccent;
                         } else {
-                          _checkbox_park = true; colorPark = Colors.tealAccent;
+                          _checkbox_park = true;
+                          colorPark = Colors.tealAccent;
                         }
                       });
                     },
@@ -409,9 +412,11 @@ class _FilterScreenState extends State<FilterScreen> {
                     onChanged: (value) {
                       setState(() {
                         if (_checkbox_museum == true) {
-                          _checkbox_museum = false; colorMuseum = Colors.greenAccent;
+                          _checkbox_museum = false;
+                          colorMuseum = Colors.greenAccent;
                         } else {
-                          _checkbox_museum = true; colorMuseum = Colors.tealAccent;
+                          _checkbox_museum = true;
+                          colorMuseum = Colors.tealAccent;
                         }
                       });
                     },
@@ -420,13 +425,12 @@ class _FilterScreenState extends State<FilterScreen> {
                   width: 16,
                   height: 16,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(35.0),
-                        topRight: Radius.circular(35.0),
-                        bottomLeft: Radius.circular(35.0),
-                        bottomRight: Radius.circular(35.0)),
-                    color: Colors.tealAccent
-                  ),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(35.0),
+                          topRight: Radius.circular(35.0),
+                          bottomLeft: Radius.circular(35.0),
+                          bottomRight: Radius.circular(35.0)),
+                      color: Colors.tealAccent),
                 )
               ],
             )),
@@ -455,9 +459,11 @@ class _FilterScreenState extends State<FilterScreen> {
                     onChanged: (value) {
                       setState(() {
                         if (_checkbox_cafe == true) {
-                          _checkbox_cafe = false; colorCafe = Colors.greenAccent;
+                          _checkbox_cafe = false;
+                          colorCafe = Colors.greenAccent;
                         } else {
-                          _checkbox_cafe = true; colorCafe = Colors.tealAccent;
+                          _checkbox_cafe = true;
+                          colorCafe = Colors.tealAccent;
                         }
                       });
                     },
@@ -540,7 +546,8 @@ class _FilterScreenState extends State<FilterScreen> {
                 margin: EdgeInsets.fromLTRB(0.0, 4.0, 16.0, 0.0),
                 width: 108,
                 height: 20,
-                child: Text(strValue.substring(0,5)+ ' метров'),
+                child: Text(strValue.substring(0, 5) +
+                    ' метров'), //тут показывает сколько метров радиус охвата
               ),
             ],
           ),
@@ -574,26 +581,33 @@ class _FilterScreenState extends State<FilterScreen> {
         height: 20,
       ),
       Container(
-        width: 328,
-        height: 48,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25.0),
-              topRight: Radius.circular(25.0),
-              bottomLeft: Radius.circular(25.0),
-              bottomRight: Radius.circular(25.0)),
-          color: Colors.greenAccent,
-        ),
-        child: Center(
-            child: Row(children: [
-          SizedBox(
-            width: 135,
+          width: 328,
+          height: 48,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25.0),
+                topRight: Radius.circular(25.0),
+                bottomLeft: Radius.circular(25.0),
+                bottomRight: Radius.circular(25.0)),
+            color: Colors.greenAccent,
           ),
-          Text('Мест('),
-          Text(amount),
-          Text(')')
-        ])),
-      ),
+          child: InkWell(
+            splashColor: Colors.white,
+            onTap: () {
+              setState(() {
+                print('это места');
+              });
+            },
+            child: Center(
+                child: Row(children: [
+              SizedBox(
+                width: 135,
+              ),
+              Text('Мест('),
+              Text(amount),
+              Text(')')
+            ])),
+          )),
     ]))));
   }
 }
