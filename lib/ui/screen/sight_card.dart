@@ -19,53 +19,49 @@ class _SightCardState extends State<SightCard> {
         aspectRatio: 3 / 2,
         child: Column(children: <Widget>[
           Container(
-            child: Stack(children: <Widget>[
-              InkWell(
-                  splashColor: Colors.cyanAccent,
-                  onTap: () {
-                    setState(() {
-                      print('да, это кремль');
-                    });
-                  },
-                  child: Container(
-                      height: 96,
-                      width: 328,
-                      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                      decoration: BoxDecoration(
-                        color: Colors.blueAccent,
+            child: InkWell(
+                splashColor: Colors.cyanAccent,
+                onTap: () {
+                  setState(() {
+                    print('да, это кремль');
+                  });
+                },
+                child: Container(
+                    child: Stack(children: <Widget>[
+                  Container(
+                    height: 96,
+                    width: 328,
+                    margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+                    child: ClipRRect(
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(15.0),
                             topRight: Radius.circular(15.0)),
-                      ),
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15.0),
-                              topRight: Radius.circular(15.0)),
-                          child: Image.network(
-                            widget.sight.image,
-                            fit: BoxFit.cover,
-                            loadingBuilder: (BuildContext context, Widget child,
-                                ImageChunkEvent loadProgress) {
-                              if (loadProgress == null) return child;
-                              return Center(
-                                child: CircularProgressIndicator(
-                                  value: loadProgress.expectedTotalBytes != null
-                                      ? loadProgress.cumulativeBytesLoaded /
-                                          loadProgress.expectedTotalBytes
-                                      : null,
-                                ),
-                              );
-                            },
-                          )))),
-              Container(
-                child: Text(
-                  (widget.sight.type),
-                  style:
-                      TextStyle(fontSize: 14.0, color: const Color(0xFF3B3E5B)),
-                ),
-                margin: EdgeInsets.fromLTRB(23.0, 18.0, 0.0, 0.0),
-              ),
-            ]),
+                        child: Image.network(
+                          widget.sight.image,
+                          fit: BoxFit.cover,
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent loadProgress) {
+                            if (loadProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadProgress.expectedTotalBytes != null
+                                    ? loadProgress.cumulativeBytesLoaded /
+                                        loadProgress.expectedTotalBytes
+                                    : null,
+                              ),
+                            );
+                          },
+                        )),
+                  ),
+                  Container(
+                    child: Text(
+                      (widget.sight.type),
+                      style: TextStyle(
+                          fontSize: 14.0, color: const Color(0xFF3B3E5B)),
+                    ),
+                    margin: EdgeInsets.fromLTRB(23.0, 18.0, 0.0, 0.0),
+                  ),
+                ]))),
           ),
           SizedBox(
             width: 328,

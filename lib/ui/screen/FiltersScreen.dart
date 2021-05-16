@@ -145,25 +145,24 @@ class _FilterScreenState extends State<FilterScreen> {
           children: [
             Container(
                 child: Stack(
-              children: [
-                Container(
-                    margin: EdgeInsets.fromLTRB(40.5, 0.0, 0.0, 0.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(35.0),
-                          topRight: Radius.circular(35.0),
-                          bottomLeft: Radius.circular(35.0),
-                          bottomRight: Radius.circular(35.0)),
-                      color: colorHotel,
-                    ),
-                    width: 64,
-                    height: 64,
-                    child: IconButton(
-                      icon: Icon(Icons.hotel),
-                      onPressed: () {
-                        print('hotel');
-                      },
-                    )),
+              children: [Container(
+                  margin: EdgeInsets.fromLTRB(40.5, 0.0, 0.0, 0.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(35.0),
+                        topRight: Radius.circular(35.0),
+                        bottomLeft: Radius.circular(35.0),
+                        bottomRight: Radius.circular(35.0)),
+                    color: colorHotel,
+                  ),
+                  width: 64,
+                  height: 64,
+                  child: IconButton(
+                    icon: Icon(Icons.hotel),
+                    onPressed: () {
+                      print('hotel');
+                    },
+                  )),
                 Container(
                   child: Checkbox(
                     activeColor: Colors.transparent,
