@@ -1,27 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:places/ui/screen/themes.dart';
 
-class SettingsScreen extends StatefulWidget with ChangeNotifier {
+class SettingsScreen extends StatefulWidget {
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
 }
 
 bool isSwitched = false;
-
-class ValueFromSettings extends ChangeNotifier {
-  //передает bool в main для темы
-  static bool value;
-
-  static void setBool(bool newValue) {
-    value = newValue;
-  }
-
-  static bool getBool() {
-    return value;
-  }
-
-  notifyListeners();
-}
 
 
 class _SettingsScreenState extends State<SettingsScreen> with ChangeNotifier {
@@ -46,8 +31,7 @@ class _SettingsScreenState extends State<SettingsScreen> with ChangeNotifier {
                         value: isSwitched,
                         onChanged: (value) {
                           setState(() {
-                            isSwitched = value;
-                            ValueFromSettings.setBool(isSwitched);// в main передает bool для темы
+                            print('тема');
                           });
                         },
                         activeTrackColor: Colors.yellow,

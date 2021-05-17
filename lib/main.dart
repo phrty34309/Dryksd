@@ -8,6 +8,9 @@ import 'package:places/ui/screen/themes.dart';
 import 'package:places/ui/screen/FiltersScreen.dart';
 import 'package:places/ui/screen/SettingsScreen.dart';
 import 'package:provider/provider.dart';
+import 'package:places/ui/screen/AddSightScreen.dart';
+import 'package:places/ui/screen/SightSearchScreen.dart';
+
 
 void main() {
   runApp(App());
@@ -20,21 +23,17 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> with ChangeNotifier {
   var isDarkMode = false;
-  var values = ValueFromSettings();
 
   @override
   Widget build(BuildContext context) {
 
-    values.addListener(() {
-      ValueFromSettings.getBool();
-    });
 
     return MaterialApp(
         title: 'Интересные места',
-        theme: ValueFromSettings.getBool() == false? darkTheme : lightTheme,
+        theme: isDarkMode == false? darkTheme : lightTheme,
         // вот здесь не норм //isDarkMode ? darkTheme : lightTheme,
         home: Stack(children: <Widget>[
-          FilterScreen(), //Visiting(), //SightDetails(mocks[0]),// SettingsScreen(),SightListScreen(),
+          SightListScreen(),//AddSight(), //SightSearchScreen(),//AddSight(),//FilterScreen(), //Visiting(), //SightDetails(mocks[0]),// SettingsScreen(),
           Container(
               width: 65,
               margin: EdgeInsets.fromLTRB(275.0, 490.0, 16.0, 6.0),
@@ -45,10 +44,6 @@ class _AppState extends State<App> with ChangeNotifier {
                   setState(
                     () {
                       isDarkMode = !isDarkMode;
-                      ValueFromSettings
-                          .getBool(); // в общем переключаю свитчер в SettingsScreen, а потом эту кнопку и тема меняется. Обратно таким же макаром.
-                      print(ValueFromSettings
-                          .getBool()); // это для проверки , тут все норм. Нажимаешь свитчер в SettingsScreen тут true, опять нажимаешь свитчер - false.
                     },
                   );
                 },
