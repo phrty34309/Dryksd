@@ -23,9 +23,6 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
 
   var _controller = TextEditingController();
 
-  List mockses = [] ;
-  var centerPoint = [55.7546469, 37.6214679]; // координата центра
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -192,23 +189,3 @@ List funcForTextField(data, word) {
   return data;
 }
 
-bool finder(centerPoint, checkPoint, km) {
-  //формула Пифагора про гипотенузу и катеты. Используется ниже в globalfinder.
-  double ky = 40000 / 360;
-  double kx = cos(pi * centerPoint[0] / 180) * ky;
-  double dx = (centerPoint[1] - checkPoint[1]).abs() * kx;
-  double dy = (centerPoint[0] - checkPoint[0]).abs() * ky;
-  return (sqrt(dx * dx + dy * dy) <= km);
-}
-
-List globfinder(listOfGeoOfPlaces, meinPlace, radius) {
-  //выдает список bool, который содержит только true.
-  List sp = [];
-  for (var i in listOfGeoOfPlaces) {
-    bool m = finder(i, meinPlace, radius);
-    if (m == true) {
-      sp.add(m);
-    }
-  }
-  return sp;
-}
