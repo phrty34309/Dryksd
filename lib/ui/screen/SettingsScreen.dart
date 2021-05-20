@@ -8,7 +8,6 @@ class SettingsScreen extends StatefulWidget {
 
 bool isSwitched = false;
 
-
 class _SettingsScreenState extends State<SettingsScreen> with ChangeNotifier {
   @override
   Widget build(BuildContext context) {
@@ -31,7 +30,7 @@ class _SettingsScreenState extends State<SettingsScreen> with ChangeNotifier {
                         value: isSwitched,
                         onChanged: (value) {
                           setState(() {
-                            print('тема');
+                            print('тема'); // пока принт далее будет заменено
                           });
                         },
                         activeTrackColor: Colors.yellow,

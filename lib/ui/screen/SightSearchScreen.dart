@@ -8,7 +8,9 @@ import 'package:places/ui/screen/Category.dart';
 import 'package:places/ui/screen/SightDetails.dart';
 import 'package:places/ui/screen/FiltersScreen.dart';
 import 'dart:math';
-
+import 'package:places/domain/sight.dart';
+import 'package:collection/collection.dart'; //не пригодился, потом пригодится
+import 'package:unique_list/unique_list.dart'; //не пригодился, потом пригодится
 
 class SightSearchScreen extends StatefulWidget {
   @override
@@ -19,7 +21,8 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
   List forLooter = [];
 
   String nameForTextField;
-  List resultForTextField = [];
+  String imageForTextField;
+  List resultForTextField;
 
   var _controller = TextEditingController();
 
@@ -60,6 +63,7 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
                         width: 300,
                         color: Colors.white,
                         child: TextField(
+                          autofocus: true,
                           controller: _controller,
                           onChanged: (_controller) {
                             for (var i in mocks) {
@@ -69,17 +73,14 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
                                       _controller.length > 3 ||
                                   i.name.contains('  ' + _controller) &&
                                       _controller.length > 3) {
-                                //  if (_controller == '') {
-                                //    continue;
-                                //  }
-
-                                // if (_controller == ' ') {
-                                //  continue;
-                                // }
 
                                 nameForTextField = i.name;
-                                resultForTextField = funcForTextField(forLooter,
-                                    nameForTextField); // forLooter ключевая. Дальше именно она используется везде
+                                imageForTextField = i.image;
+                                resultForTextField = funcForTextField(
+                                    //функции все внизу
+                                    forLooter,
+                                    nameForTextField,
+                                    imageForTextField); // в список forLooter собирается [nameForTextField,imageForTextField]
                               }
                             }
 
@@ -89,6 +90,7 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
                             });
                           },
                           decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.search),
                               hintText: "Введите текст",
                               contentPadding: EdgeInsets.all(5),
                               suffix: IconButton(
@@ -133,13 +135,23 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
                             MaterialPageRoute(
                                 builder: (BuildContext context) => SightDetails(
                                     funcForSightDetails(
-                                        mocks, forLooter[index]))));
+                                        mocks, forLooter[index][0]))));
                       },
                       child: Container(
                           width: 100,
                           height: 70,
                           child: Stack(children: [
-                            Text(forLooter[index]),
+                            Container(
+                                child: Row(children: [
+                              Text(forLooter[index][0]),
+                              SizedBox(
+                                width: 50,
+                              ),
+                              Container(
+                                  width: 50,
+                                  height: 50,
+                                  child: Image.network(forLooter[index][1]))
+                            ])),
                             Center(
                                 child: CircularProgressIndicator(
                                     value: forLooter.isEmpty ? null : 0.001)),
@@ -158,11 +170,89 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
                     width: 200,
                     height: 35,
                     child: Text(
-                      'очистить историю',
+                      'очистить',
                     ))),
           ),
         ],
-      )), //tyt
+      )),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        //чтобы первая иконка не выезжала
+        items: [
+          BottomNavigationBarItem(
+              icon: InkWell(
+                  splashColor: Colors.white,
+                  onTap: () {
+                    setState(() {
+                      print('да, это меню');
+                    });
+                  },
+                  child: Container(
+                    width: 70,
+                    child: Icon(
+                      Icons.format_list_bulleted,
+                      size: 20,
+                      color: Colors.black,
+                    ),
+                  )),
+              label: '',
+              backgroundColor: Colors.white),
+          BottomNavigationBarItem(
+              icon: InkWell(
+                  splashColor: Colors.white,
+                  onTap: () {
+                    setState(() {
+                      print('да, это карта');
+                    });
+                  },
+                  child: Container(
+                    width: 70,
+                    child: Icon(
+                      Icons.map,
+                      size: 20,
+                      color: Colors.black,
+                    ),
+                  )),
+              label: '',
+              backgroundColor: Colors.white),
+          BottomNavigationBarItem(
+              icon: InkWell(
+                  splashColor: Colors.white,
+                  onTap: () {
+                    setState(() {
+                      print('да, это like');
+                    });
+                  },
+                  child: Container(
+                    width: 70,
+                    child: Icon(
+                      Icons.favorite,
+                      size: 20,
+                      color: Colors.black,
+                    ),
+                  )),
+              label: '',
+              backgroundColor: Colors.white),
+          BottomNavigationBarItem(
+              icon: InkWell(
+                  splashColor: Colors.white,
+                  onTap: () {
+                    setState(() {
+                      print('да, это settings');
+                    });
+                  },
+                  child: Container(
+                    width: 70,
+                    child: Icon(
+                      Icons.settings,
+                      size: 20,
+                      color: Colors.black,
+                    ),
+                  )),
+              label: ' ',
+              backgroundColor: Colors.white)
+        ],
+      ), //tyt
     );
   }
 }
@@ -170,6 +260,7 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
 funcForSightDetails(mass, word) {
   //фунция определяет экран SightDetails. То есть какой экран откроется.
   var point;
+
   for (var i in mass) {
     if (i.name.contains(word)) {
       point = i;
@@ -178,14 +269,8 @@ funcForSightDetails(mass, word) {
   return point;
 }
 
-List funcForTextField(data, word) {
-  var radius;
-
-  //для TextField чтобы не повторялись названия мест
-  if (data.contains(word) == false) {
-    data.add(word);
-    //data.sort();
-  }
+List funcForTextField(data, word, image) {//собирает в список название и ссылку на картинку. Это результат поиска
+  data.clear();
+  data.add([word, image]);
   return data;
 }
-

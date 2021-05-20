@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/Category.dart';
@@ -7,11 +8,10 @@ import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_card.dart';
 import 'package:places/domain/sight.dart';
 
-
 class AddSight extends StatefulWidget {
   final String namecategory;
 
-  const AddSight({Key key, this.namecategory}) : super(key: key);
+  const AddSight({Key key, this.namecategory}) : super(key: key); // из Category
 
   @override
   _AddSightState createState() => _AddSightState();
@@ -26,9 +26,7 @@ class _AddSightState extends State<AddSight> {
   String dolgota;
   String about;
 
-
   final _catcontroller = TextEditingController(text: category);
-
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +36,23 @@ class _AddSightState extends State<AddSight> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.fromLTRB(10.0, 50.0, 0.0, 0.0),
+              height: 56,
+              width: 360,
+              margin: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
               child: Row(
                 children: <Widget>[
                   Container(
-                    child: Text('Отмена'),
+                    child: Text('Отмена',
+                        style: TextStyle(
+                            fontSize: 16.0, fontWeight: FontWeight.w500)),
                   ),
                   SizedBox(
                     width: 160,
                   ),
                   Container(
-                    child: Text('Новое место'),
+                    child: Text('Новое место',
+                        style: TextStyle(
+                            fontSize: 18.0, fontWeight: FontWeight.w500)),
                   )
                 ],
               ),
@@ -56,15 +60,16 @@ class _AddSightState extends State<AddSight> {
             Container(
                 child: Row(children: <Widget>[
               Container(
-                width: 330,
+                margin: EdgeInsets.fromLTRB(16.0, 0.0, 0.0, 0.0),
+                width: 320,
                 child: TextField(
                   key: Key(category),
                   controller: _catcontroller,
-                  style: TextStyle(fontSize: 12, color: Colors.blue),
+                  style: TextStyle(fontSize: 12, color: Colors.green),
                   decoration: InputDecoration(
-                    labelText: 'категория',
-                    hintText: 'Не выбрано',
-                  ),
+                      labelText: 'категория',
+                      hintText: 'Не выбрано',
+                      border: OutlineInputBorder(borderSide: BorderSide.none)),
                   textInputAction: TextInputAction.next,
                 ),
               ),
@@ -80,26 +85,33 @@ class _AddSightState extends State<AddSight> {
                       child: Icon(Icons.arrow_forward)))
             ])),
             Container(
+              width: 328,
+              height: 68,
               margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
               child: TextField(
                 onChanged: (text) {
                   name = text;
                 },
                 textInputAction: TextInputAction.next,
-                style: TextStyle(fontSize: 12, color: Colors.blue),
+                style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.w400),
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                   labelText: 'название',
                   hintText: 'введите текст',
                 ),
               ),
             ),
-            Container(
+            Container(height: 68,
               child: Row(
                 children: [
                   Container(
                     width: 160,
-                    margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                    margin: EdgeInsets.fromLTRB(15.0, 10.0, 10.0, 0.0),
                     child: TextField(
                       onChanged: (text) {
                         shirota = text;
@@ -107,15 +119,17 @@ class _AddSightState extends State<AddSight> {
                       textInputAction: TextInputAction.next,
                       style: TextStyle(fontSize: 12, color: Colors.blue),
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
                         labelText: 'широта',
                         hintText: 'введите текст',
                       ),
                     ),
                   ),
                   Container(
-                    width: 160,
-                    margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                    width: 156,
+                    margin: EdgeInsets.fromLTRB(5.0, 10.0, 10.0, 0.0),
                     child: TextField(
                       onChanged: (text) {
                         dolgota = text;
@@ -124,7 +138,9 @@ class _AddSightState extends State<AddSight> {
                       onSubmitted: (_) => FocusScope.of(context).nextFocus(),
                       style: TextStyle(fontSize: 12, color: Colors.blue),
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
                         labelText: 'долгота',
                         hintText: 'введите текст',
                       ),
@@ -137,7 +153,7 @@ class _AddSightState extends State<AddSight> {
                 splashColor: Colors.blueAccent,
                 onTap: () {
                   setState(() {
-                    print('категории');
+                    print('категории'); //пока тут принт далее будет другое
                   });
                 },
                 child: Align(
@@ -149,15 +165,17 @@ class _AddSightState extends State<AddSight> {
                     child: Text('Указать на карте'),
                   ),
                 )),
-            Container(
+            Container(width: 328,
               child: TextField(
                 onChanged: (text) {
                   about = text;
                 },
                 maxLines: 3,
-                style: TextStyle(fontSize: 12, color: Colors.blue),
+                style: TextStyle(fontSize: 12, color: Colors.green),
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                   labelText: 'описание',
                   hintText: 'введите текст',
                 ),
@@ -171,7 +189,8 @@ class _AddSightState extends State<AddSight> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => SightSearchScreen()));
+                        builder: (BuildContext context) =>
+                            SightSearchScreen()));
 
                 setState(() {
                   dataFromAddSightScreen = [
@@ -181,7 +200,6 @@ class _AddSightState extends State<AddSight> {
                     about
                   ];
 
-
                   mocks.add(Sight(
                       name,
                       [shirota, dolgota],
@@ -189,16 +207,13 @@ class _AddSightState extends State<AddSight> {
                       about,
                       category,
                       image =
-                      'https://fs.tonkosti.ru/89/3w/893w7b7qx0wskksw0kk0k0408.jpg'));
-
+                          'https://fs.tonkosti.ru/89/3w/893w7b7qx0wskksw0kk0k0408.jpg'));
 
                   print(dataFromAddSightScreen);
                   print(mocks);
-
-
                 });
               },
-              child: Container(
+              child: Container(padding:EdgeInsets.fromLTRB(0.0, 110.0, 0.0, 0.0),
                 child: Text('СОЗДАТЬ'),
               ),
             )

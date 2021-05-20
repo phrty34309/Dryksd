@@ -8,9 +8,13 @@ class SightCard extends StatefulWidget {
 
   SightCard(this.sight);
 
+  //bool iconButtonSet = true;
+
   @override
   _SightCardState createState() => _SightCardState();
 }
+
+bool iconButtonSet = true;
 
 class _SightCardState extends State<SightCard> {
   @override
@@ -61,6 +65,16 @@ class _SightCardState extends State<SightCard> {
                     ),
                     margin: EdgeInsets.fromLTRB(23.0, 18.0, 0.0, 0.0),
                   ),
+                  Container(
+                      margin: EdgeInsets.fromLTRB(285.0, 5.0, 5.0, 0.0),
+                      child: FlatButton.icon(
+                          onPressed: () {
+                            setState(() {
+                              iconButtonSet != iconButtonSet;
+                            });
+                          },
+                          icon: Icon(Icons.clear),
+                          label: Text(''))),
                 ]))),
           ),
           SizedBox(

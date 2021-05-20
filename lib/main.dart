@@ -30,10 +30,10 @@ class _AppState extends State<App> with ChangeNotifier {
 
     return MaterialApp(
         title: 'Интересные места',
-        theme: isDarkMode == false? darkTheme : lightTheme,
+        theme: isDarkMode == false? lightTheme : darkTheme,
         // вот здесь не норм //isDarkMode ? darkTheme : lightTheme,
         home: Stack(children: <Widget>[
-          SightListScreen(),//AddSight(), //SightSearchScreen(),//AddSight(),//FilterScreen(), //Visiting(), //SightDetails(mocks[0]),// SettingsScreen(),
+          AddSight(),//SightSearchScreen(), //Visiting(),//AddSight(), //SightListScreen(), //AddSight(),//FilterScreen(), //SightDetails(mocks[0]),// SettingsScreen(),
           Container(
               width: 65,
               margin: EdgeInsets.fromLTRB(275.0, 490.0, 16.0, 6.0),

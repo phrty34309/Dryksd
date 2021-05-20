@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_card.dart';
 
-
 class Visiting extends StatefulWidget {
   @override
   _VisitingState createState() => _VisitingState();
@@ -67,8 +66,12 @@ class _VisitingState extends State<Visiting> {
               (SightCard(mocks[0])),
               SightCard(mocks[2])
             ])),
-            SingleChildScrollView(
-                child: Column(children: <Widget>[(SightCard(mocks[1]))])),
+            ListView.builder(
+                padding: const EdgeInsets.all(4),
+                itemCount: 1, // mocks.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return SightCard(mocks[index]);
+                }),
           ]),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,

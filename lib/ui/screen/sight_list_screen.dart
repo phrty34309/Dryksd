@@ -41,9 +41,6 @@ class _SightListScreenState extends State<SightListScreen> {
                     context,
                     MaterialPageRoute(
                         builder: (BuildContext context) => AddSight()));
-                setState(
-                  () {},
-                );
               },
               child: Container(
                   child: Row(children: <Widget>[
