@@ -31,8 +31,8 @@ String strValue = '0.000'; // это радиус показывает в мет
 String amount = '0'; // это количество мест показывает в кнопке зеленой внизу
 var _value = 100.0;
 var centerPoint = [55.7546469, 37.6214679]; // координата центра
-var mockses; //список коорднат мест
-int amountOfPlaces; //число мест которые поблизости
+List? mockses; //список коорднат мест
+int? amountOfPlaces; //число мест которые поблизости
 
 class _FilterScreenState extends State<FilterScreen> {
   @override

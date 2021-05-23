@@ -20,9 +20,9 @@ class SightSearchScreen extends StatefulWidget {
 class _SightSearchScreenState extends State<SightSearchScreen> {
   List forLooter = [];
 
-  String nameForTextField;
-  String imageForTextField;
-  List resultForTextField;
+  String? nameForTextField;
+  String? imageForTextField;
+  List? resultForTextField;
 
   var _controller = TextEditingController();
 
@@ -73,7 +73,6 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
                                       _controller.length > 3 ||
                                   i.name.contains('  ' + _controller) &&
                                       _controller.length > 3) {
-
                                 nameForTextField = i.name;
                                 imageForTextField = i.image;
                                 resultForTextField = funcForTextField(
@@ -269,7 +268,8 @@ funcForSightDetails(mass, word) {
   return point;
 }
 
-List funcForTextField(data, word, image) {//собирает в список название и ссылку на картинку. Это результат поиска
+List funcForTextField(data, word, image) {
+  //собирает в список название и ссылку на картинку. Это результат поиска
   data.clear();
   data.add([word, image]);
   return data;

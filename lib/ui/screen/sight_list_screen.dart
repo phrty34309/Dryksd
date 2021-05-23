@@ -14,6 +14,8 @@ class SightListScreen extends StatefulWidget {
 }
 
 class _SightListScreenState extends State<SightListScreen> {
+  //final _counterState_3 = GlobalKey();//добавил ключ
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,12 +139,13 @@ class _SightListScreenState extends State<SightListScreen> {
 }
 
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final double height;
+  final double? height;
 
   const MyCustomAppBar({
-    Key key,
+    Key? key,
     @required this.height,
   }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -196,14 +199,14 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               actions: [
                 IconButton(
                   color: Colors.black,
-                  icon: IconButton(icon: Icon(Icons.filter_list)),
+                  icon: Icon(Icons.filter_list),
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (BuildContext context) => FilterScreen()));
-                  },
-                ),
+                  },),
+
               ],
             ),
           ),
@@ -213,5 +216,5 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(height);
+  Size get preferredSize => Size.fromHeight(175.0);
 }

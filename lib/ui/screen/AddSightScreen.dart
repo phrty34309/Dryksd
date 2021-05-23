@@ -1,30 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:places/ui/screen/sight_list_screen.dart';
+
+//import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/Category.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/screen/SightSearchScreen.dart';
 import 'package:places/mocks.dart';
-import 'package:places/ui/screen/sight_card.dart';
-import 'package:places/domain/sight.dart';
+
+//import 'package:places/ui/screen/sight_card.dart';
+//import 'package:places/domain/sight.dart';
+//import 'package:places/ui/screen/VisitingScreen.dart';
 
 class AddSight extends StatefulWidget {
-  final String namecategory;
+  final String? namecategory;
 
-  const AddSight({Key key, this.namecategory}) : super(key: key); // из Category
+  const AddSight({Key? key, this.namecategory})
+      : super(key: key); // из Category
 
   @override
   _AddSightState createState() => _AddSightState();
 }
 
-List dataFromAddSightScreen;
+List? dataFromAddSightScreen;
 
 class _AddSightState extends State<AddSight> {
 //String category;
-  String name;
-  String shirota;
-  String dolgota;
-  String about;
+  late String name;
+  late String shirota;
+  late String dolgota;
+  late String about;
+  late bool favorite;
+  late bool wantVisited;
+  late bool haveVisited;
 
   final _catcontroller = TextEditingController(text: category);
 
@@ -106,7 +113,8 @@ class _AddSightState extends State<AddSight> {
                 ),
               ),
             ),
-            Container(height: 68,
+            Container(
+              height: 68,
               child: Row(
                 children: [
                   Container(
@@ -165,7 +173,8 @@ class _AddSightState extends State<AddSight> {
                     child: Text('Указать на карте'),
                   ),
                 )),
-            Container(width: 328,
+            Container(
+              width: 328,
               child: TextField(
                 onChanged: (text) {
                   about = text;
@@ -207,13 +216,17 @@ class _AddSightState extends State<AddSight> {
                       about,
                       category,
                       image =
-                          'https://fs.tonkosti.ru/89/3w/893w7b7qx0wskksw0kk0k0408.jpg'));
+                          'https://fs.tonkosti.ru/89/3w/893w7b7qx0wskksw0kk0k0408.jpg',
+                      favorite,
+                      wantVisited,
+                      haveVisited));
 
                   print(dataFromAddSightScreen);
                   print(mocks);
                 });
               },
-              child: Container(padding:EdgeInsets.fromLTRB(0.0, 110.0, 0.0, 0.0),
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0.0, 110.0, 0.0, 0.0),
                 child: Text('СОЗДАТЬ'),
               ),
             )

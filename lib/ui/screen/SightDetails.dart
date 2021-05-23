@@ -29,18 +29,7 @@ class _SightDetailsState extends State<SightDetails> {
                           child: Image.network(
                             widget.sight.image,
                             fit: BoxFit.cover,
-                            loadingBuilder: (BuildContext context, Widget child,
-                                ImageChunkEvent loadProgress) {
-                              if (loadProgress == null) return child;
-                              return Center(
-                                child: CircularProgressIndicator(
-                                  value: loadProgress.expectedTotalBytes != null
-                                      ? loadProgress.cumulativeBytesLoaded /
-                                          loadProgress.expectedTotalBytes
-                                      : null,
-                                ),
-                              );
-                            },
+
                           ))),
                   Container(
                     width: 360,

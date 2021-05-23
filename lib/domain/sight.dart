@@ -6,7 +6,10 @@ class Sight {
   String url;
   String details;
   String type;
-  var image;
+  String image;
+  bool favorite;
+  bool wantVisited;
+  bool haveVisited;
 
   Sight(
     this.name,
@@ -15,5 +18,8 @@ class Sight {
     this.details,
     this.type,
     this.image,
+    this.favorite,
+    this.wantVisited,
+    this.haveVisited,
   );
 }
